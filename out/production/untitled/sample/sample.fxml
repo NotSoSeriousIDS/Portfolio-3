@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.GridPane?>
 
 
-<GridPane alignment="center" hgap="10" prefHeight="301.0" prefWidth="340.0" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="420.0" prefWidth="462.0" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="sample.Controller">
    <children>
-      <BorderPane prefHeight="246.0" prefWidth="287.0">
+      <BorderPane prefHeight="358.0" prefWidth="379.0">
          <center>
-            <TextArea prefHeight="120.0" prefWidth="120.0" BorderPane.alignment="CENTER" />
+            <TextArea prefHeight="295.0" prefWidth="240.0" translateX="-24.0" BorderPane.alignment="CENTER" />
          </center>
          <top>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <ButtonBar prefHeight="39.0" prefWidth="383.0" BorderPane.alignment="CENTER">
               <buttons>
                   <MenuButton mnemonicParsing="false" text="Start Vertex">
                     <items>
@@ -42,15 +42,15 @@
             </ButtonBar>
          </bottom>
          <left>
-            <ButtonBar prefHeight="110.0" prefWidth="146.0" BorderPane.alignment="CENTER">
+            <ButtonBar prefHeight="234.0" prefWidth="118.0" BorderPane.alignment="CENTER">
               <buttons>
-                  <MenuButton mnemonicParsing="false" text="SortMethod">
+                <Button mnemonicParsing="false" text="Run" />
+                  <MenuButton maxHeight="20.0" maxWidth="81.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="185.0" text="SortMethod" translateX="-80.0" translateY="39.0">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Manhattan" />
                       <MenuItem mnemonicParsing="false" text="Euclidean" />
                     </items>
                   </MenuButton>
-                <Button mnemonicParsing="false" text="Button" />
               </buttons>
             </ButtonBar>
          </left>
