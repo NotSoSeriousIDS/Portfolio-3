@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,10 +18,32 @@
          <top>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
-                <Button mnemonicParsing="false" text="Button" />
+                  <MenuButton mnemonicParsing="false" text="Start Vertex">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
+                <Button mnemonicParsing="false" text="Set Start Path" />
               </buttons>
             </ButtonBar>
          </top>
+         <bottom>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <buttons>
+                  <MenuButton mnemonicParsing="false" text="EndVertex">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
+                <Button mnemonicParsing="false" text="Set endpath" />
+              </buttons>
+            </ButtonBar>
+         </bottom>
+         <left>
+            <Button mnemonicParsing="false" text="Run" BorderPane.alignment="CENTER" />
+         </left>
       </BorderPane>
    </children>
 </GridPane>
