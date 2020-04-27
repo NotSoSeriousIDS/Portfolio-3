@@ -1,10 +1,11 @@
 package sample;
 
 import java.util.ArrayList;
-import java.util.PriorityQueue;
 
 public class AStarGraph {
     private ArrayList<Vertex> vertices;
+    private Vertex Startvertex;
+
     public AStarGraph() {
         vertices=new ArrayList<Vertex>();
     }
@@ -19,9 +20,9 @@ public class AStarGraph {
     public boolean A_Star(Vertex start, Vertex destination)
     {   if (start==null || destination==null)
         return false;
-        PriorityQueue<Vertex> Openlist = new PriorityQueue<Vertex>();
+        ArrayList<Vertex> Openlist = new ArrayList<Vertex>();
         ArrayList<Vertex> Closedlist = new ArrayList<Vertex>();
-        Openlist.offer(start);
+        Openlist.add(start);
         Vertex Current;
         ArrayList<Vertex> CurrentNeighbors;
         Vertex Neighbor;
@@ -36,13 +37,38 @@ public class AStarGraph {
         System.out.println("Start Algorithm");
         //Implement the Astar algorithm
         // Use Pseudo code
-        /*
-        openlist.add(startvertex)
-        closedlist = empty
-        Current =null
-        */
+
+        Openlist.add(Startvertex);
+        
+        while (!Openlist.isEmpty()){
+            Current = Fmin(Openlist);
+            for (int i = 0; i <Current.getNeighbours().size() -1 ; i++) {
+
+                double g = Current.getNeighbours().get(i).getg();
+                double h = Current.getNeighbours().get(i).geth();
+                double f = g + h;
+                Current.getNeighbours().get(i).setf(f);
+                Openlist.add(Current.getNeighbours().get(i));
+               // Closedlist.add(Current.getNeighbours().get(i));
+            }
+
+        }
+
         return false;
     }
+
+    public Vertex Fmin(ArrayList<Vertex> v){
+        double Fmin = 100000;
+        int y = 0;
+        for (int i = 0; i < v.size(); i++ ) {
+            if(v.get(i).getf() < Fmin) {
+                Fmin = v.get(i).getf();
+                y = i;
+            }
+        }
+        return v.get(y);
+    }
+
     public Double Manhattan(Vertex from,Vertex goal){
         //Implement this
         return 0.0; // example of sample.Manhattan A*
@@ -67,7 +93,7 @@ class Vertex implements Comparable<Vertex>{
         this.id=id;
         this.x=x_cor;
         this.y = y_cor;
-        f=Double.POSITIVE_INFINITY; // How far the total journey
+        setf(Double.POSITIVE_INFINITY); // How far the total journey
         g=Double.POSITIVE_INFINITY;
         h=0.0; // has to be changed depending on which estimation we'd use, incase of the usage of ecldium or manhatten A*
     }
@@ -99,7 +125,7 @@ class Vertex implements Comparable<Vertex>{
     }
     public void calculatef()
     {
-        f=g+h;
+        setf(g+h);
     }
     public Double getg()
     {
@@ -135,5 +161,9 @@ class Vertex implements Comparable<Vertex>{
 //Implement this
 // so that it can return 1 and -1 depending on the f value
         return 0;
+    }
+
+    public void setf(Double f) {
+        this.f = f;
     }
 }
