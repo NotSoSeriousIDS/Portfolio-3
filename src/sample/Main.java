@@ -29,7 +29,7 @@ public class Main extends Application {
             Vertex J = null; //This must be changed
 
             if (MyMaze.A_Star(A, J)) {
-                System.out.println("Found a path");
+                System.out.println("AStar_PathFinder");
                 Vertex pvertex = J; // has to be changed so that it is able to take start and goal.
                 //to print path -->
                 Stack<Vertex> Path = new Stack<>();
