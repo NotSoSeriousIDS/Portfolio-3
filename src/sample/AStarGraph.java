@@ -28,7 +28,7 @@ public class AStarGraph {
         //Initialize h with chosen heuristic
         for (int i =0; i<vertices.size();i++)
         {
-            vertices.get(i).seth(Manhattan(vertices.get(i),destination)); // initialize the Manhattan distance, need implementation of the Manhattan return function below
+            vertices.get(i).seth(Manhattan(vertices.get(i),destination)); // initialize the sample.Manhattan distance, need implementation of the sample.Manhattan return function below
         }
         start.setg(0.0);
         start.calculatef(); // should be equal to the H value of my start
@@ -45,11 +45,11 @@ public class AStarGraph {
     }
     public Double Manhattan(Vertex from,Vertex goal){
         //Implement this
-        return 0.0; // example of Manhattan A*
+        return 0.0; // example of sample.Manhattan A*
     }
     public Double Euclidean( Vertex from,Vertex to){
         //Implement this
-        return 0.0; // Euclidean
+        return 0.0; // sample.Euclidean
     }
 }
 

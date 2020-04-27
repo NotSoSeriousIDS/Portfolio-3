@@ -40,8 +40,8 @@
               <buttons>
                   <MenuButton mnemonicParsing="false" text="SortMethod">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Manhattan" />
-                      <MenuItem mnemonicParsing="false" text="Euclidean" />
+                      <MenuItem mnemonicParsing="false" text="sample.Manhattan" />
+                      <MenuItem mnemonicParsing="false" text="sample.Euclidean" />
                     </items>
                   </MenuButton>
                 <Button mnemonicParsing="false" text="Run" />
