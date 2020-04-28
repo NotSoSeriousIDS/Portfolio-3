@@ -21,7 +21,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
         AStarGraph MyMaze = new AStarGraph();
         // Make the graph provided to you in the diagram and table
         //The vertices must be constructed like A
