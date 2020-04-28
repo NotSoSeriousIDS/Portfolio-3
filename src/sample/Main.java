@@ -60,7 +60,7 @@ public class Main extends Application {
         MyMaze.newconnection(H, J, 4.41);
         MyMaze.newconnection(I, J, 3.82);
         //MyMaze.printGraph();
-
+        // vertexes and edges needs to return something
 
             if (MyMaze.A_Star(A, J)) {
                 System.out.println("AStar_PathFinder");
