@@ -71,11 +71,16 @@ public class AStarGraph {
 
     public Double Manhattan(Vertex from,Vertex goal){
         //Implement this
-        return 0.0; // example of sample.Manhattan A*
+        double length = Math.abs(goal.getx()-from.getx()) + Math.abs(goal.gety()-from.gety());
+        return length; // example of sample.Manhattan A*
     }
+
     public Double Euclidean( Vertex from,Vertex to){
         //Implement this
-        return 0.0; // sample.Euclidean
+        double x = to.getx()-from.getx();
+        double y = to.getx()-from.gety();
+        double length = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2));
+        return length; // sample.Euclidean
     }
 }
 
