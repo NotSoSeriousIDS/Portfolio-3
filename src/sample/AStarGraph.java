@@ -71,16 +71,16 @@ public class AStarGraph {
 
     public Double Manhattan(Vertex from,Vertex goal){
         //Implement this
-        double length = Math.abs(goal.getx()-from.getx()) + Math.abs(goal.gety()-from.gety());
-        return length; // example of sample.Manhattan A*
+        double distance = Math.abs(goal.getx()-from.getx()) + Math.abs(goal.gety()-from.gety());
+        return distance; // example of sample.Manhattan A*
     }
 
     public Double Euclidean( Vertex from,Vertex to){
         //Implement this
         double x = to.getx()-from.getx();
         double y = to.getx()-from.gety();
-        double length = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2));
-        return length; // sample.Euclidean
+        double distance = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2));
+        return distance; // sample.Euclidean
     }
 }
 
@@ -162,9 +162,13 @@ class Vertex implements Comparable<Vertex>{
         System.out.println(id + " g: "+g+ ", h: "+h+", f: "+f);
     }
     @Override
-    public int compareTo(Vertex o) {
+    public int compareTo(Vertex vertex) {
 //Implement this
 // so that it can return 1 and -1 depending on the f value
+        if(this.getf() > vertex.getf())
+            return 1;
+            if (this.getf() < vertex.getf())
+                return -1;
         return 0;
     }
 
