@@ -16,7 +16,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("AStar_Calculator");
 
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 800, 494.437577));
         primaryStage.show();
     }
 
