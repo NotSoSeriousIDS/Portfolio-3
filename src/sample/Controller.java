@@ -32,12 +32,9 @@ public class Controller  {
         @FXML
         RadioButton runManhattan;
 
-
-
         Vertex start;
         Vertex slut;
         AStarGraph graphModel = CreateGraph();
-
 
         public void initialize() {
                 ComboboxEndpath.getItems().addAll(graphModel.getVertices());
@@ -45,23 +42,14 @@ public class Controller  {
                 Group1 = new ToggleGroup();
                 runManhattan.setToggleGroup(Group1);
                 runEucledian.setToggleGroup(Group1);
-
-
-
         }
 
         public void Print(ActionEvent actionEvent) {
-
                 //når denne knap trykkes, skal den tage A_star formlen og printe den ud med Heurstik funktionen -
                 // "function" og sætte den til 2 samt. Start og endpath variablerne
-
-
-
                 if(runEucledian.isSelected()){
                         System.out.println("Eucledian is selected");
-
                         try{
-
                                 String s = Astarsolver(start,slut,2,graphModel);
                                 textArea.setText(s);
                                 textArea.appendText("\n" + "Weight: " + slut.getg());
@@ -72,7 +60,7 @@ public class Controller  {
                         catch (Exception e) {
                                 textArea.setText("vælg Start og slut path først");
                         }
-                }if(runManhattan.isSelected()) {
+                        }if(runManhattan.isSelected()) {
                         System.out.println("Manhattan is selected");
 
                         //System.out.print(Path.pop().getid() +" - > ");
@@ -86,35 +74,26 @@ public class Controller  {
                         }
                 }
         }
-
         public void PrintGraph(InputMethodEvent inputMethodEvent) {
-
-                //sætte print ind i textarea
+                //placeholder for TextArea
         }
-
         public void SetStart(ActionEvent actionEvent) {
                 ComboBox <Vertex> Start = (ComboBox<Vertex>) actionEvent.getSource();
                 System.out.println(Start.getValue());
                 start = Start.getValue();
         }
-
         public void SetEnd(ActionEvent actionEvent) {
                 ComboBox <Vertex> End = (ComboBox<Vertex>) actionEvent.getSource();
                 System.out.println(End.getValue());
                 slut = End.getValue();
         }
-
         public void Manhattan(ActionEvent actionEvent) {
-
-
-
+             //placeholder for buttons
         }
 
         public void Eucledian(ActionEvent actionEvent) {
-
+                //placeholder for buttons
         }
-
-
         public AStarGraph CreateGraph() {
                 AStarGraph MyMaze = new AStarGraph();
                 // Make the graph provided to you in the diagram and table
@@ -155,7 +134,6 @@ public class Controller  {
                 MyMaze.newconnection(I, J, 3.82);
                 return MyMaze;
                 // TEST A STAR <-----------------
-
         }
         public String Astarsolver(Vertex start,Vertex slut, int DistanceMethod, AStarGraph graph) {
                 StringBuilder stringBuilder = new StringBuilder();
@@ -187,10 +165,6 @@ public class Controller  {
                         stringBuilder.append("DID NOT FIND A PATH");
                      //   System.out.println("DID NOT FIND A PATH!!");
                 return stringBuilder.toString();
-        }
-
-        public void HandlePathLine() {
-
         }
 }
 

@@ -57,10 +57,7 @@ public class AStarGraph {
             System.out.println("add to closedList" + current.getid());
             for (int i = 0; i < current.getNeighbours().size() ; i++) {
                 Vertex vertex = current.getNeighbours().get(i);
-
                 stringBuilder.append("\n"+ " - > ").append(vertex.getid());
-
-                //System.out.println("We go to: " + vertex.getid());
                 double newWeight; // newWeight
                 stringBuilder.append( " Distance from origin: " +current.getg() + current.getNeighbourDistance().get(i));
                newWeight = current.getg() + current.getNeighbourDistance().get(i); // calculate distance
@@ -70,11 +67,8 @@ public class AStarGraph {
                     System.out.println(" We set previous to be: " + current.getid());
                     vertex.setPrev(current);
                     vertex.setg(newWeight);
-
                     System.out.println("We set the value: " + newWeight + ", to the vertex: " + vertex.getid());
-
                     vertex.calculatef();
-
                     // IF closedlist and opelist does not contain vertex
                     if (!closedList.contains(vertex) && !openList.contains(vertex)) {
                         openList.offer(vertex);
@@ -137,19 +131,17 @@ class Vertex implements Comparable<Vertex>{
     public String getid(){ return id;};
     public Integer getx(){ return x; }
     public Integer gety(){return y; }
-    public Double getf() { return f; }
+
     public void calculatef(){ f=g+h; }
 
     public Double getg() { return g; }
 
     public void setg(Double newg){ g=newg; }
-    public Double geth(){ return h; }
+
     public void seth(Double estimate){ h=estimate; }
     public Vertex getPrev() { return prev; }
     public void setPrev(Vertex v){prev=v;}
-    public void printVertex(){
-        System.out.println(id + " g: "+g+ ", h: "+h+", f: "+f);
-    }
+
     @Override
     public int compareTo(Vertex vertex) {
         if (this.f > vertex.f)
