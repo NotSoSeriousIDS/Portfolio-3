@@ -16,8 +16,8 @@ public class AStarGraph {
         v1.addOutEdge(v2,dist);
         v2.addOutEdge(v1,dist);
     }
-    public boolean A_Star(Vertex start, Vertex destination) {
-        if (start==null || destination==null)
+    public boolean A_Star(Vertex start, Vertex destination, int function) {
+        if (start==null || destination==null )
             return false;
 
         PriorityQueue<Vertex> openList = new PriorityQueue<Vertex>();
@@ -28,7 +28,15 @@ public class AStarGraph {
         Vertex Neighbor;
         //Initialize h with chosen heuristic
         for (int i =0; i<vertices.size();i++) {
-            vertices.get(i).seth(Manhattan(vertices.get(i),destination));
+            vertices.get(i).setPrev(null); // sets vertice to null, so that its cleaned before rerun
+            vertices.get(i).setg(Double.POSITIVE_INFINITY);// sets vertice to null, so that its cleaned before rerun
+            if(function /*call something else */  == 1){
+                vertices.get(i).seth(Manhattan(vertices.get(i),destination));
+            } if(function == 2) {
+                vertices.get(i).seth(Euclidean(vertices.get(i),destination));
+            }
+
+
         }
         start.setg(0.0);
         start.calculatef();
@@ -47,20 +55,23 @@ public class AStarGraph {
             }
             closedList.add(current);
             System.out.println("add to closedList" + current.getid());
+            for (int i = 0; i < current.getNeighbours().size() ; i++) {
+                Vertex vertex = current.getNeighbours().get(i);
 
-            for(Vertex vertex : current.getNeighbours()) {
                 System.out.println("We go to: " + vertex.getid());
                 double newWeight; // newWeight
 
 
                 // CALCULATE DISTANCE
-                if (calculateAsManhattan) {
+               /* if (calculateAsManhattan) {
                     newWeight = current.getg() + Manhattan(current, vertex);
                     System.out.println("we calculated the Manhattan to be: " + newWeight);
                 } else {
                     newWeight = current.getg() + Euclidean(current, vertex);
                     System.out.println("we calculated the Euclidean to be: " + newWeight);
-                }
+                } */
+
+               newWeight = current.getg() + current.getNeighbourDistance().get(i); // calculate distance
 
                 // IF NEW CALCULATED DISTANCE is less than CALCULATED DISTANCE ON VERTEX
                 if (newWeight < vertex.getg()) {
@@ -74,12 +85,12 @@ public class AStarGraph {
 
                     // IF closedlist and opelist does not contain vertex
                     if (!closedList.contains(vertex) && !openList.contains(vertex)) {
-                        openList.add(vertex);
+                        openList.offer(vertex);
                     }
 
                     if (openList.contains(vertex)) {
                         openList.remove(vertex);
-                        openList.add(vertex);
+                        openList.offer(vertex);
                     }
 
                 }
@@ -159,9 +170,11 @@ class Vertex implements Comparable<Vertex>{
         System.out.println(id + " g: "+g+ ", h: "+h+", f: "+f);
     }
     @Override
-    public int compareTo(Vertex o) {
-//Implement this
-//
+    public int compareTo(Vertex vertex) {
+        if (this.f > vertex.f)
+            return 1;
+        if (this.f < vertex.f)
+            return -1;
         return 0;
     }
 }

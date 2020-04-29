@@ -11,72 +11,67 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <GridPane alignment="center" hgap="10" prefHeight="420.0" prefWidth="462.0" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <children>
-      <BorderPane prefHeight="358.0" prefWidth="379.0">
-         <center>
-            <TextArea prefHeight="295.0" prefWidth="240.0" translateX="-24.0" BorderPane.alignment="CENTER" />
-         </center>
-         <top>
-            <ButtonBar prefHeight="39.0" prefWidth="383.0" BorderPane.alignment="CENTER">
-              <buttons>
-                  <MenuButton mnemonicParsing="false" text="Start Vertex">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="A" />
-                      <MenuItem mnemonicParsing="false" text="B" />
-                        <MenuItem mnemonicParsing="false" text="C" />
-                        <MenuItem mnemonicParsing="false" text="D" />
-                        <MenuItem mnemonicParsing="false" text="E" />
-                        <MenuItem mnemonicParsing="false" text="F" />
-                        <MenuItem mnemonicParsing="false" text="G" />
-                        <MenuItem mnemonicParsing="false" text="H" />
-                        <MenuItem mnemonicParsing="false" text="I" />
-                        <MenuItem mnemonicParsing="false" text="J" />
-                    </items>
-                  </MenuButton>
-                <Button mnemonicParsing="false" text="Set Start Path" />
-              </buttons>
-            </ButtonBar>
-         </top>
-         <bottom>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-              <buttons>
-                  <MenuButton mnemonicParsing="false" text="EndVertex">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="A" />
-                      <MenuItem mnemonicParsing="false" text="B" />
-                        <MenuItem mnemonicParsing="false" text="C" />
-                        <MenuItem mnemonicParsing="false" text="D" />
-                        <MenuItem mnemonicParsing="false" text="E" />
-                        <MenuItem mnemonicParsing="false" text="F" />
-                        <MenuItem mnemonicParsing="false" text="G" />
-                        <MenuItem mnemonicParsing="false" text="H" />
-                        <MenuItem mnemonicParsing="false" text="I" />
-                        <MenuItem mnemonicParsing="false" text="J" />
-                    </items>
-                  </MenuButton>
-                <Button mnemonicParsing="false" text="Set endpath" />
-              </buttons>
-            </ButtonBar>
-         </bottom>
-         <left>
-            <ButtonBar prefHeight="234.0" prefWidth="118.0" BorderPane.alignment="CENTER">
-              <buttons>
-                <Button mnemonicParsing="false" text="Run" />
-                  <MenuButton maxHeight="20.0" maxWidth="81.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="185.0" text="SortMethod" translateX="-80.0" translateY="39.0">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Manhattan" />
-                      <MenuItem mnemonicParsing="false" text="Euclidean" />
-                    </items>
-                  </MenuButton>
-              </buttons>
-            </ButtonBar>
-         </left>
-      </BorderPane>
-   </children>
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+    <children>
+        <BorderPane prefHeight="358.0" prefWidth="379.0">
+            <center>
+                <TextArea prefHeight="295.0" prefWidth="240.0" translateX="-24.0" BorderPane.alignment="CENTER" />
+            </center>
+            <top>
+                <ButtonBar prefHeight="39.0" prefWidth="383.0" BorderPane.alignment="CENTER">
+                    <buttons>
+                        <MenuButton mnemonicParsing="false" text="Start Vertex">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="A" />
+                                <MenuItem mnemonicParsing="false" text="B" />
+                                <MenuItem mnemonicParsing="false" text="C" />
+                                <MenuItem mnemonicParsing="false" text="D" />
+                                <MenuItem mnemonicParsing="false" text="E" />
+                                <MenuItem mnemonicParsing="false" text="F" />
+                                <MenuItem mnemonicParsing="false" text="G" />
+                                <MenuItem mnemonicParsing="false" text="H" />
+                                <MenuItem mnemonicParsing="false" text="I" />
+                                <MenuItem mnemonicParsing="false" text="J" />
+                            </items>
+                        </MenuButton>
+                        <Button mnemonicParsing="false" text="Set Start Path" />
+                    </buttons>
+                </ButtonBar>
+            </top>
+            <bottom>
+                <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <buttons>
+                        <MenuButton mnemonicParsing="false" text="EndVertex">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="A" />
+                                <MenuItem mnemonicParsing="false" text="B" />
+                                <MenuItem mnemonicParsing="false" text="C" />
+                                <MenuItem mnemonicParsing="false" text="D" />
+                                <MenuItem mnemonicParsing="false" text="E" />
+                                <MenuItem mnemonicParsing="false" text="F" />
+                                <MenuItem mnemonicParsing="false" text="G" />
+                                <MenuItem mnemonicParsing="false" text="H" />
+                                <MenuItem mnemonicParsing="false" text="I" />
+                                <MenuItem mnemonicParsing="false" text="J" />
+                            </items>
+                        </MenuButton>
+                        <Button mnemonicParsing="false" text="Set endpath" />
+                    </buttons>
+                </ButtonBar>
+            </bottom>
+            <left>
+                <ButtonBar prefHeight="234.0" prefWidth="118.0" BorderPane.alignment="CENTER">
+                    <buttons>
+                        <Button mnemonicParsing="false" text="Run E" />
+                        <Button mnemonicParsing="false" text="Run M" />
+                    </buttons>
+                </ButtonBar>
+            </left>
+        </BorderPane>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
 </GridPane>
