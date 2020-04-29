@@ -5,21 +5,20 @@ import java.util.PriorityQueue;
 
 public class AStarGraph {
     private ArrayList<Vertex> vertices;
-    public boolean calculateAsManhattan = false;
+    private boolean calculateAsManhattan = false;
     public AStarGraph() {
-        vertices=new ArrayList<Vertex>();
+        setVertices(new ArrayList<Vertex>());
     }
     public void addvertex(Vertex v) {
-        vertices.add(v);
+        getVertices().add(v);
     }
     public void newconnection(Vertex v1, Vertex v2, Double dist) {
         v1.addOutEdge(v2,dist);
         v2.addOutEdge(v1,dist);
     }
-    public boolean A_Star(Vertex start, Vertex destination, int function) {
+    public boolean A_Star(Vertex start, Vertex destination, float function, StringBuilder stringBuilder) {
         if (start==null || destination==null )
             return false;
-
         PriorityQueue<Vertex> openList = new PriorityQueue<Vertex>();
         ArrayList<Vertex> closedList = new ArrayList<Vertex>();
         openList.offer(start);
@@ -27,23 +26,23 @@ public class AStarGraph {
         ArrayList<Vertex> currentNeighbors;
         Vertex Neighbor;
         //Initialize h with chosen heuristic
-        for (int i =0; i<vertices.size();i++) {
-            vertices.get(i).setPrev(null); // sets vertice to null, so that its cleaned before rerun
-            vertices.get(i).setg(Double.POSITIVE_INFINITY);// sets vertice to null, so that its cleaned before rerun
+        for (int i = 0; i< getVertices().size(); i++) {
+            getVertices().get(i).setPrev(null); // sets vertice to null, so that its cleaned before rerun
+            getVertices().get(i).setg(Double.POSITIVE_INFINITY);// sets vertice to null, so that its cleaned before rerun
             if(function /*call something else */  == 1){
-                vertices.get(i).seth(Manhattan(vertices.get(i),destination));
+                getVertices().get(i).seth(Manhattan(getVertices().get(i),destination));
             } if(function == 2) {
-                vertices.get(i).seth(Euclidean(vertices.get(i),destination));
+                getVertices().get(i).seth(Euclidean(getVertices().get(i),destination));
             }
-
-
         }
         start.setg(0.0);
         start.calculatef();
         //Start algorithm
         System.out.println("Start Algorithm");
         System.out.println();
-        //Implement the Astar algorithm
+
+        stringBuilder.append("Calculating path...");
+        //***************AStar algorithm*******************
 
         while(openList.size()>0){
             current = openList.remove();
@@ -53,29 +52,22 @@ public class AStarGraph {
                 System.out.println("Found destination, distance was: "+current.getg());
                 return true;
             }
+
             closedList.add(current);
             System.out.println("add to closedList" + current.getid());
             for (int i = 0; i < current.getNeighbours().size() ; i++) {
                 Vertex vertex = current.getNeighbours().get(i);
 
-                System.out.println("We go to: " + vertex.getid());
+                stringBuilder.append("\n"+ " - > ").append(vertex.getid());
+
+                //System.out.println("We go to: " + vertex.getid());
                 double newWeight; // newWeight
-
-
-                // CALCULATE DISTANCE
-               /* if (calculateAsManhattan) {
-                    newWeight = current.getg() + Manhattan(current, vertex);
-                    System.out.println("we calculated the Manhattan to be: " + newWeight);
-                } else {
-                    newWeight = current.getg() + Euclidean(current, vertex);
-                    System.out.println("we calculated the Euclidean to be: " + newWeight);
-                } */
-
+                stringBuilder.append( " Distance from origin: " +current.getg() + current.getNeighbourDistance().get(i));
                newWeight = current.getg() + current.getNeighbourDistance().get(i); // calculate distance
 
                 // IF NEW CALCULATED DISTANCE is less than CALCULATED DISTANCE ON VERTEX
                 if (newWeight < vertex.getg()) {
-                    System.out.println("We set previous to be: " + current.getid());
+                    System.out.println(" We set previous to be: " + current.getid());
                     vertex.setPrev(current);
                     vertex.setg(newWeight);
 
@@ -87,41 +79,30 @@ public class AStarGraph {
                     if (!closedList.contains(vertex) && !openList.contains(vertex)) {
                         openList.offer(vertex);
                     }
-
                     if (openList.contains(vertex)) {
                         openList.remove(vertex);
                         openList.offer(vertex);
                     }
-
                 }
             }
-        }
+        } return false;
 
-
-
-
-
-
-
-        return false;
     }
     public Double Manhattan(Vertex from,Vertex goal){
-        //Implement this
-        System.out.println(goal.getx());
         double distance = Math.abs(goal.getx()-from.getx()) + Math.abs(goal.gety()-from.gety());
         return distance; // example of sample.Manhattan A*
     }
     public Double Euclidean( Vertex from,Vertex to){
-        //Implement this
-        //System.out.println("From v: "+from.getid()+", fromX: "+from.getx()+", fromY: "+from.gety());
-        //System.out.println("To v: "+to.getid()+", ToX: "+to.getx()+", toY: "+to.gety());
         double x = to.getx()-from.getx();
         double y = to.getx()-from.gety();
         double distance = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2));
-        //System.out.println(distance);
         return distance; // sample.Euclidean
-
-
+    }
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
+    }
+    public void setVertices(ArrayList<Vertex> vertices) {
+        this.vertices = vertices;
     }
 }
 
@@ -176,5 +157,10 @@ class Vertex implements Comparable<Vertex>{
         if (this.f < vertex.f)
             return -1;
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "SetVertex " + id;
     }
 }
